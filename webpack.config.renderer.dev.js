@@ -101,7 +101,7 @@ export default merge.smart(baseConfig, {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: false,
               sourceMap: true,
               importLoaders: 1,
               localIdentName: '[name]__[local]__[hash:base64:5]'
@@ -147,6 +147,20 @@ export default merge.smart(baseConfig, {
             loader: 'sass-loader'
           }
         ]
+      },
+      {
+        test: /\.less$/,
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }, {
+          loader: 'less-loader', options: {
+            strictMath: true,
+            noIeCompat: true,
+            javascriptEnabled: true
+          }
+        }]
       },
       // WOFF Font
       {
